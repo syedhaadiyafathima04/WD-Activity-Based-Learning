@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Whimsybell Bakery</title>
+
+    <style>
+        body {
+            background-color: #F2C6D0;
+            font-family: Georgia, serif;
+        }
+
+        .box {
+            background-color: #FFF8F5;
+            width: 70%;
+            margin: 50px auto;
+            padding: 40px;
+            border-radius: 15px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #633C3C;
+        }
+
+        h2 {
+            color: #784A50;
+        }
+
+        p {
+            text-align: center;
+            color: #9A6570;
+        }
+
+        label {
+            color: #633C3C;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0 18px;
+            border: 1px solid #E2B7BF;
+            border-radius: 7px;
+            background-color: #FFFDFB;
+        }
+
+        textarea {
+            height: 80px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background-color: #C8798B;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #A95D70;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h1>Place Your Order</h1>
+
+        <p>WHIMSYBELL BAKERY</p>
+        <p>Freshly baked, specially made for you.</p>
+
+        <h2>Customer Details</h2>
+
+        <label>Full Name</label>
+        <input type="text" placeholder="Enter your name">
+
+        <label>Phone Number</label>
+        <input type="text" placeholder="Enter your phone number">
+
+        <label>Email</label>
+        <input type="email" placeholder="Enter your email">
+
+        <h2>Your Order</h2>
+
+        <label>Choose Item</label>Fresh Pastries
+Chocolate Cake
+Strawberry Cake
+Butterscotch
+Red Velvet
+Vanilla Dream
+Black Forest
+Custom Cakes
+Fresh Cookies
+Cupcakes
+Donuts
+Pie Tarts
+
+        <select>
+            <option>Choose your treat</option>
+            <option>Fresh Pastries</option>
+            <option>Chocolate Cake</option>
+            <option>Red Velvet Cake</option>
+            <option>Strawberry Cake</option>
+            <option>Butterscotch</option>
+            <option>Vanilla Dream</option>
+            <option>Black Forest</option>
+            <option>Custom Cakes</option>
+             <option>Fresh Cookies</option>
+            <option>Cupcakes</option>
+            <option>Donuts</option>
+            <option>Pie Tarts</option>
+        </select>
+
+        <label>Quantity</label>
+        <input type="number" min="1" value="1">
+
+        <label>Preferred Date</label>
+        <input type="date">
+
+        <h2>Order Type</h2>
+
+        <input type="radio" name="type"> Pickup
+        <input type="radio" name="type"> Delivery
+
+        <br><br>
+
+        <label>Address</label>
+        <textarea placeholder="Enter your address"></textarea>
+
+        <label>Special Instructions</label>
+        <textarea placeholder="Any special requests?"></textarea>
+
+        <button>Place Order</button>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Crave Kitchen</title>
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+html{
+scroll-behavior:smooth;
+}
+body{
+font-family:Arial,sans-serif;
+background:#F5EBDD;
+color:#9E2638;
+}
+header{
+background:#0B1718;
+padding:18px 7%;
+display:flex;
+align-items:center;
+justify-content:space-between;
+position:sticky;
+top:0;
+z-index:10;
+}
+.logo{
+font-size:30px;
+font-weight:bold;
+color:#D6B56A;
+letter-spacing:1px;
+}
+nav a{
+color:white;
+text-decoration:none;
+margin-left:25px;
+font-size:14px;
+font-weight:bold;
+}
+nav a:hover{
+color:#D6B56A;
+}
+.hero{
+height:600px;
+display:flex;
+position:relative;
+overflow:hidden;
+}
+.hero-text{
+width:45%;
+background:#142728;
+color:white;
+display:flex;
+flex-direction:column;
+justify-content:center;
+padding:70px 7%;
+}
+.hero-text h1{
+font-size:65px;
+line-height:1;
+margin-bottom:20px;
+}
+.hero-text h1 span{
+color:#D6B56A;
+}
+.hero-text p{
+line-height:1.7;
+font-size:17px;
+margin-bottom:30px;
+}
+.button{
+display:inline-block;
+background:#9E2638;
+color:white;
+text-decoration:none;
+padding:14px 25px;
+width:max-content;
+font-weight:bold;
+border-radius:4px;
+}
+.button:hover{
+background:#C9364A;
+}
+.hero-label{
+position:absolute;
+right:40px;
+bottom:35px;
+background:#D6B56A;
+color:#0B1718;
+padding:20px 28px;
+font-weight:bold;
+font-size:18px;
+}
+.about{
+background-color:#F5EBDD;
+padding:90px 8%;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:70px;
+align-items:center;
+}
+.about-image img{
+width:100%;
+height:430px;
+object-fit:cover;
+border-radius:5px;
+}
+.about-text h2{
+font-size:45px;
+margin-bottom:20px;
+color:#0B1718;
+}
+.about-text h2 span{
+color:#9E2638;
+}
+.about-text p{
+line-height:1.9;
+color:#746B60;
+margin-bottom:20px;
+}
+.special{
+background:#1D3A38;
+padding:75px 8%;
+}
+.section-title{
+text-align:center;
+margin-bottom:45px;
+}
+.section-title h2{
+font-size:42px;
+color:#FFFFFF;
+margin-bottom:10px;
+}
+.section-title p{
+color:#E8D7BC;
+}
+.special-grid{
+background-color:#1D3A38;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+}
+.special-card{
+background:#F5EBDD;
+overflow:hidden;
+border-radius:6px;
+}
+.special-card img{
+width:100%;
+height:230px;
+object-fit:cover;
+}
+.special-card div{
+padding:22px;
+}
+.special-card h3{
+font-size:22px;
+margin-bottom:10px;
+color:#0B1718;
+}
+.special-card p{
+font-size:14px;
+line-height:1.6;
+color:#746B60;
+}
+.menu{
+background-color:#E8D7BC;
+padding:90px 7%;
+}
+.menu-title{
+text-align:center;
+margin-bottom:50px;
+}
+.menu-title h2{
+font-size:48px;
+color:#0B1718;
+}
+.menu-title p{
+margin-top:10px;
+color:#746B60;
+}
+.menu-section{
+margin-bottom:65px;
+}
+.menu-section h3{
+font-size:30px;
+color:#9E2638;
+border-left:7px solid #D6B56A;
+padding-left:15px;
+margin-bottom:25px;
+}
+.menu-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+}
+.food{
+background:#F5EBDD;
+border:1px solid #D6C5A8;
+box-shadow:0 5px 18px #0B171815;
+overflow:hidden;
+border-radius:6px;
+transition:.3s;
+}
+.food:hover{
+transform:translateY(-6px);
+}
+.food img{
+width:100%;
+height:210px;
+object-fit:cover;
+}
+.food-info{
+padding:18px;
+}
+.food-info h4{
+font-size:20px;
+margin-bottom:8px;
+color:#0B1718;
+}
+.food-info p{
+font-size:14px;
+line-height:1.5;
+color:#746B60;
+}
+.food-bottom{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-top:14px;
+}
+.price{
+font-weight:bold;
+color:#9E2638;
+font-size:17px;
+}
+.order-small{
+background:#0B1718;
+color:white;
+padding:8px 14px;
+text-decoration:none;
+font-size:12px;
+}
+.order-small:hover{
+background:#9E2638;
+}
+.order{
+background:#9E2638;
+padding:80px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:50px;
+color:white;
+}
+.order-text{
+max-width:600px;
+}
+.order-text h2{
+font-size:45px;
+margin-bottom:15px;
+}
+.order-text p{
+line-height:1.7;
+margin-bottom:25px;
+color:#F5EBDD;
+}
+.order .button{
+background:#D6B56A;
+color:#0B1718;
+}
+.order-image{
+width:40%;
+}
+.order-image img{
+width:100%;
+height:300px;
+object-fit:cover;
+border-radius:6px;
+}
+.gallery{
+padding:90px 7%;
+background:#F5EBDD;
+}
+.gallery-title{
+text-align:center;
+margin-bottom:40px;
+}
+.gallery-title h2{
+font-size:45px;
+color:#0B1718;
+}
+.gallery-grid{
+display:grid;
+grid-template-columns:2fr 1fr 1fr;
+grid-template-rows:230px 230px;
+gap:12px;
+}
+.gallery-grid img{
+width:100%;
+height:100%;
+object-fit:cover;
+border-radius:5px;
+}
+.gallery-grid img:first-child{
+grid-row:1/3;
+}
+footer{
+background:#0B1718;
+color:white;
+padding:60px 8% 25px;
+}
+.footer-grid{
+display:grid;
+grid-template-columns:2fr 1fr 1fr 1fr;
+gap:40px;
+margin-bottom:45px;
+}
+.footer-logo{
+font-size:30px;
+font-weight:bold;
+color:#D6B56A;
+margin-bottom:15px;
+}
+footer h3{
+color:#D6B56A;
+margin-bottom:15px;
+}
+footer p{
+color:#E8D7BC;
+font-size:14px;
+line-height:1.8;
+}
+footer a{
+display:block;
+color:#E8D7BC;
+text-decoration:none;
+font-size:14px;
+margin-bottom:8px;
+}
+.footer-bottom{
+border-top:1px solid #FFFFFF33;
+padding-top:20px;
+text-align:center;
+font-size:13px;
+color:#BDAF9A;
+}
+@media(max-width:900px){
+.hero{
+height:auto;
+flex-direction:column;
+}
+.hero-text,.hero-image{
+width:100%;
+}
+.hero-text{
+padding:80px 10%;
+}
+.hero-image{
+height:400px;
+}
+.about,.order{
+grid-template-columns:1fr;
+display:grid;
+}
+.special-grid,.menu-grid{
+grid-template-columns:repeat(2,1fr);
+}
+.order-image{
+width:100%;
+}
+.footer-grid{
+grid-template-columns:1fr 1fr;
+}
+}
+@media(max-width:600px){
+nav{
+display:none;
+}
+.hero-text h1{
+font-size:48px;
+}
+.special-grid,.menu-grid,.footer-grid{
+grid-template-columns:1fr;
+}
+.gallery-grid{
+grid-template-columns:1fr;
+grid-template-rows:auto;
+}
+.gallery-grid img:first-child{
+grid-row:auto;
+}
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="logo">CRAVE KITCHEN</div>
+<nav>
+<a href="#about">ABOUT</a>
+<a href="#special">SPECIAL</a>
+<a href="#menu">MENU</a>
+<a href="#orders">ORDERS</a>
+<a href="#gallery">GALLERY</a>
+</nav>
+</header>
+
+<section class="hero">
+<div class="hero-text">
+<h1>Good Food.<br><span>Great Mood.</span></h1>
+<p>Fresh ingredients, bold flavors and dishes made to turn every meal into a memory.</p>
+<a href="#menu" class="button">EXPLORE MENU</a>
+</div>
+<div class="hero-image"></div>
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaHk9p0bTrNAtwAz6b_jmkAkqrkxxZPkNElRlQRXWaGg&s=10">
+<div class="hero-label">FRESHLY MADE DAILY</div>
+</section>
+
+<section class="about" id="about">
+<div class="about-image">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1ukv9nnTp_hBxRZhJIk0i0I-GeKR2JDCQ2KSKKKg_lQ&s=10">
+</div>
+<div class="about-text">
+<h2>About <span>Crave Kitchen</span></h2>
+<p>Crave Kitchen is a vibrant restaurant created for people who love good food and great company.</p>
+<p>We bring together delicious dishes, fresh ingredients and a warm atmosphere to create meals worth coming back for.</p>
+<a href="#menu" class="button">DISCOVER OUR MENU</a>
+</div>
+</section>
+
+<section class="special" id="special">
+<div class="section-title">
+<h2>What We're Special For</h2>
+<p>Our most loved flavors and signature dishes</p>
+</div>
+
+<div class="special-grid">
+
+<div class="special-card">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGj0xVitRHdXprQgYpjyGBWjD5yF-z9XCcBEP4WXEhAA&s=10">
+<div>
+<h3>Signature Burgers</h3>
+<p>Juicy grilled burgers packed with fresh toppings and our special sauces.</p>
+</div>
+</div>
+
+<div class="special-card">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxx8LdOSzFSojcYK-g6KMFFDQgMNGXnt16hbni2Xn_nA&s=10">
+<div>
+<h3>Wood Fired Pizza</h3>
+<p>Crispy bases, rich sauces and generous layers of melted cheese.</p>
+</div>
+</div>
+
+<div class="special-card">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT40YPjazQ5tIQq3zHHsoI4p_hQ4IFoEFLYTmdaiRkJVw&s=10">
+<div>
+<h3>Chef's Specials</h3>
+<p>Unique dishes prepared with bold flavors and our chef's special touch.</p>
+</div>
+</div>
+
+</div>
+</section>
+
+<section class="menu" id="menu">
+<div class="menu-title">
+<h2>Our Menu</h2>
+<p>Pick your favorite and make your order</p>
+</div>
+
+<div class="menu-section">
+<h3>Dishes</h3>
+<div class="menu-grid">
+
+<div class="food">
+<img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=700&q=80">
+<div class="food-info">
+<h4>Creamy Pasta</h4>
+<p>Creamy pasta with fresh herbs and grilled vegetables.</p>
+<div class="food-bottom"><span class="price">Rs. 320</span><a href="#orders" class="order-small">ORDER</a></div>
+</div>
+</div>
+
+<div class="food">
+<img src="https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=700&q=80">
+<div class="food-info">
+<h4>Grilled Chicken</h4>
+<p>Juicy grilled chicken served with vegetables and fries.</p>
+<div class="food-bottom"><span class="price">Rs. 380</span><a href="#orders" class="order-small">ORDER</a></div>
+</div>
+</div>
+
+<div class="food">
+<img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=700&q=80">
+<div class="food-info">
+<h4>Classic Burger</h4>
+<p>Grilled patty, fresh lettuce, cheese and signature sauce.</p>
+<div class="food-bottom"><span class="price">Rs. 280</span><a href="#orders" class="order-small">ORDER</a></div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="menu-section">
+<h3>Desserts</h3>
+<div class="menu-grid">
+
+<div class="food">
+<img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=700&q=80">
+<div class="food-info">
+<h4>Chocolate Cake</h4>
+<p>Rich chocolate layers with smooth chocolate cream.</p>
+<div class="food-bottom"><span class="price">Rs. 220</span><a href="#orders" class="order-small">ORDER</a></div>
+</div>
+</div>
+
+<div class="food">
+<img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=700&q=80">
+<div class="food-info">
+<h4>Strawberry Delight</h4>
+<p>Fresh strawberries with soft cream and cake.</p>
+<div class="food-bottom"><span class="price">Rs. 190</span><a href="#orders" class="order-small">ORDER</a></div>
+</div>
+</div>
+
+<div class="food">
+<img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=700&q=80">
+<div class="food-info">
+<h4>Chocolate Brownie</h4>
+<p>Warm chocolate brownie with a rich fudgy center.</p>
+<div class="food-bottom"><span class="price">Rs. 180</span><a href="#orders" class="order-small">ORDER</a></div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="menu-section">
+<h3>Ice Creams</h3>
+<div class="menu-grid">
+
+<div class="food">
+<img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=700&q=80">
+<div class="food-info">
+<h4>Vanilla Dream</h4>
+<p>Classic creamy vanilla ice cream.</p>
+<div class="food-bottom"><span class="price">Rs. 120</span><a href="#orders" class="order-small">ORDER</a></div>
+</div>
+</div>
+
+<div class="food">
+<img src="https://images.unsplash.com/photo-1570197788417-0e82375c9371?auto=format&fit=crop&w=700&q=80">
+<div class="food-info">
+<h4>Chocolate Scoop</h4>
+<p>Rich and creamy chocolate ice cream.</p>
+<div class="food-bottom"><span class="price">Rs. 140</span><a href="#orders" class="order-small">ORDER</a></div>
+</div>
+</div>
+
+<div class="food">
+<img src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=700&q=80">
+<div class="food-info">
+<h4>Strawberry Swirl</h4>
+<p>Sweet strawberry ice cream with berry swirls.</p>
+<div class="food-bottom"><span class="price">Rs. 140</span><a href="#orders" class="order-small">ORDER</a></div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="menu-section">
+<h3>Starters</h3>
+<div class="menu-grid">
+
+<div class="food">
+<img src="https://images.unsplash.com/photo-1572449043416-55f4685c9bb7?auto=format&fit=crop&w=700&q=80">
+<div class="food-info">
+<h4>Loaded Nachos</h4>
+<p>Crispy nachos with cheese, salsa and fresh toppings.</p>
+<div class="food-bottom"><span class="price">Rs. 220</span><a href="#orders" class="order-small">ORDER</a></div>
+</div>
+</div>
+
+<div class="food">
+<img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=700&q=80">
+<div class="food-info">
+<h4>Crispy Dumplings</h4>
+<p>Golden dumplings served with spicy dipping sauce.</p>
+<div class="food-bottom"><span class="price">Rs. 240</span><a href="#orders" class="order-small">ORDER</a></div>
+</div>
+</div>
+
+<div class="food">
+<img src="https://images.unsplash.com/photo-1565299507177-b0ac66763828?auto=format&fit=crop&w=700&q=80">
+<div class="food-info">
+<h4>Cheese Fries</h4>
+<p>Crispy fries covered with melted cheese and herbs.</p>
+<div class="food-bottom"><span class="price">Rs. 200</span><a href="#orders" class="order-small">ORDER</a></div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="menu-section">
+<h3>Soups</h3>
+<div class="menu-grid">
+
+<div class="food">
+<img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=700&q=80">
+<div class="food-info">
+<h4>Tomato Soup</h4>
+<p>Warm and creamy tomato soup with herbs.</p>
+<div class="food-bottom"><span class="price">Rs. 150</span><a href="#orders" class="order-small">ORDER</a></div>
+</div>
+</div>
+
+<div class="food">
+<img src="https://images.unsplash.com/photo-1603105037880-880cd4edfb0d?auto=format&fit=crop&w=700&q=80">
+<div class="food-info">
+<h4>Chicken Soup</h4>
+<p>Comforting chicken soup with vegetables and herbs.</p>
+<div class="food-bottom"><span class="price">Rs. 180</span><a href="#orders" class="order-small">ORDER</a></div>
+</div>
+</div>
+
+<div class="food">
+<img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=700&q=80">
+<div class="food-info">
+<h4>Creamy Mushroom Soup</h4>
+<p>Rich mushroom soup with a smooth creamy texture.</p>
+<div class="food-bottom"><span class="price">Rs. 170</span><a href="#orders" class="order-small">ORDER</a></div>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<section class="order" id="orders">
+<div class="order-text">
+<h2>Order Your Favorites Online</h2>
+<p>Craving something delicious? Choose your favorite dishes and enjoy them from the comfort of your home.</p>
+<a href="#contact" class="button">PLACE AN ORDER</a>
+</div>
+<div class="order-image">
+<img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=900&q=80">
+</div>
+</section>
+
+<section class="gallery" id="gallery">
+<div class="gallery-title">
+<h2>Restaurant Gallery</h2>
+<p>A glimpse of the food, people and atmosphere at Crave Kitchen</p>
+</div>
+<div class="gallery-grid">
+<img src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1000&q=80">
+<img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=700&q=80">
+<img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=700&q=80">
+<img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=700&q=80">
+<img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&w=700&q=80">
+</div>
+</section>
+
+<footer id="contact">
+<div class="footer-grid">
+<div>
+<div class="footer-logo">CRAVE KITCHEN</div>
+<p>Fresh food, bold flavors and memorable moments. Come hungry, leave happy.</p>
+</div>
+<div>
+<h3>Explore</h3>
+<a href="#about">About Us</a>
+<a href="#special">Our Specialties</a>
+<a href="#menu">Menu</a>
+<a href="#gallery">Gallery</a>
+</div>
+<div>
+<h3>Contact</h3>
+<p>MG Road, Vijayawada</p>
+<p>+91 98765 43210</p>
+<p>cravekitchen@gmail.com</p>
+</div>
+<div>
+<h3>Opening Hours</h3>
+<p>Monday - Friday<br>11:00 AM - 10:30 PM</p>
+<p>Saturday - Sunday<br>11:00 AM - 11:00 PM</p>
+</div>
+</div>
+
+<div class="footer-bottom">
+<p>Crave Kitchen | Great food. Great moments.</p>
+</div>
+</footer>
+
+</body>
+</html>

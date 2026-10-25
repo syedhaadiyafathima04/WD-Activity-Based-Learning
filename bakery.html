@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Whimsybell Bakery</title>
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+html{
+scroll-behavior:smooth;
+}
+body{
+font-family:Arial,sans-serif;
+background:#FFF8F4;
+color:#4A3638;
+}
+header{
+background:#A9616D;
+padding:25px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+position:sticky;
+box-shadow:0 2px 12px #4A363820;
+}
+.logo{
+font-family:Georgia,serif;
+font-size:28px;
+color:#FFF8F4;
+font-weight:bold;
+}
+nav a{
+text-decoration:none;
+color:#FFF8F4;
+margin-left:25px;
+font-size:15px;
+}
+nav a:hover{
+color:#4A3638;
+}
+.hero{
+min-height:570px;
+background:linear-gradient(#4A363855,#4A363855),url("https://hangoutcakes.com/_next/image/?url=https%3A%2F%2Fminio.hangoutcakes.com%2Fproducts%2F01M25E7JXVGC71NHMJ4N7WTAVA-v2.png&w=1200&q=75") center/cover;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+color:white;
+padding:40px;
+}
+.hero-content{
+max-width:700px;
+}
+.hero h1{
+font-family:Georgia,serif;
+font-size:65px;
+font-weight:normal;
+letter-spacing:2px;
+}
+.hero p{
+font-size:18px;
+margin:20px 0 30px;
+}
+.button{
+display:inline-block;
+background:#C97C8A;
+color:white;
+text-decoration:none;
+padding:14px 30px;
+border-radius:30px;
+font-size:15px;
+}
+.button:hover{
+background:#A9606C;
+}
+.intro{
+text-align:center;
+padding:75px 10% 45px;
+}
+.intro h2,.menu h2,.gallery-section h2,.custom h2{
+font-family:Georgia,serif;
+font-size:38px;
+font-weight:normal;
+color:#A9616D;
+margin-bottom:15px;
+}
+.intro p{
+max-width:650px;
+margin:auto;
+line-height:1.8;
+color:#765C5F;
+}
+.menu{
+padding:35px 8% 80px;
+}
+.menu-title{
+text-align:center;
+margin-bottom:40px;
+}
+.products{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:25px;
+}
+.card{
+background:#FFFFFF;
+border-radius:18px;
+overflow:hidden;
+box-shadow:0 5px 20px #8D646425;
+transition:transform .3s,box-shadow .3s;
+}
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 12px 28px #8D646440;
+}
+.card img{
+width:100%;
+height:210px;
+object-fit:cover;
+}
+.card-content{
+padding:20px;
+text-align:center;
+}
+.card h3{
+font-family:Georgia,serif;
+font-size:21px;
+font-weight:normal;
+margin-bottom:8px;
+}
+.card p{
+font-size:14px;
+color:#806A6C;
+line-height:1.5;
+}
+.price{
+display:block;
+color:#B96F7A;
+font-size:17px;
+font-weight:bold;
+margin-top:12px;
+}
+.feature{
+background:#F2D9D8;
+padding:70px 8%;
+display:flex;
+align-items:center;
+gap:60px;
+}
+.feature-image{
+width:48%;
+}
+.feature-image img{
+width:100%;
+height:380px;
+object-fit:cover;
+border-radius:25px;
+}
+.feature-text{
+width:52%;
+}
+.feature-text h2{
+font-family:Georgia,serif;
+font-size:40px;
+font-weight:normal;
+margin-bottom:18px;
+color:#87525B;
+}
+.feature-text p{
+line-height:1.8;
+color:#624A4D;
+margin-bottom:22px;
+}
+.custom{
+padding:80px 8%;
+text-align:center;
+}
+.custom p{
+max-width:650px;
+margin:0 auto 30px;
+line-height:1.8;
+color:#765C5F;
+}
+.offer{
+background:#4A3638;
+color:white;
+text-align:center;
+padding:55px 20px;
+}
+.offer h2{
+font-family:Georgia,serif;
+font-size:36px;
+font-weight:normal;
+margin-bottom:12px;
+}
+.offer p{
+margin-bottom:25px;
+}
+.offer .button{
+background:#E8B4B8;
+color:#4A3638;
+}
+.gallery-section{
+padding:75px 8%;
+}
+.gallery-title{
+text-align:center;
+margin-bottom:35px;
+}
+.gallery{
+display:grid;
+grid-template-columns:2fr 1fr 1fr;
+grid-template-rows:220px 220px;
+gap:15px;
+}
+.gallery img{
+width:100%;
+height:100%;
+object-fit:cover;
+border-radius:15px;
+}
+.gallery img:first-child{
+grid-row:1/3;
+}
+.contact{
+background:#F2E4DD;
+padding:60px 20px;
+text-align:center;
+}
+.contact h2{
+font-family:Georgia,serif;
+font-size:35px;
+font-weight:normal;
+color:#87525B;
+margin-bottom:20px;
+}
+.contact p{
+margin:8px;
+color:#654D50;
+}
+footer{
+background:#2F2224;
+color:#E8B4B8;
+text-align:center;
+padding:18px;
+font-size:13px;
+}
+@media(max-width:900px){
+.products{
+grid-template-columns:repeat(2,1fr);
+}
+.feature{
+flex-direction:column;
+}
+.feature-image,.feature-text{
+width:100%;
+}
+}
+@media(max-width:600px){
+header{
+flex-direction:column;
+gap:15px;
+}
+nav a{
+margin:0 7px;
+}
+.hero h1{
+font-size:42px;
+}
+.products{
+grid-template-columns:1fr;
+}
+.gallery{
+grid-template-columns:1fr;
+grid-template-rows:auto;
+}
+.gallery img:first-child{
+grid-row:auto;
+}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">Whimsybell Bakery</div>
+<nav>
+<a href="#home">Home</a>
+<a href="#menu">Menu</a>
+<a href="#custom">Custom Cakes</a>
+<a href="#gallery">Gallery</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
+
+<section class="hero" id="home">
+<div class="hero-content">
+<h1>Sweet Moments</h1>
+<p>Handcrafted cakes,delicate pastries and little treats made to make every moment sweeter.</p>
+<a href="#menu" class="button">Explore Our Menu</a>
+</div>
+</section>
+
+<section class="intro">
+<h2>Welcome to Whimsybell Bakery</h2>
+<p>Where every dessert is baked with care, decorated with love and made to bring a little sweetness into your day.</p>
+</section>
+
+<section class="menu" id="menu">
+<div class="menu-title">
+<h2>Our Sweet Collection</h2>
+<p>Freshly baked favorites made just for you</p>
+</div>
+
+<div class="products">
+
+<div class="card">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKMz-f2x5GurMjajeinpx_NyIyvMez1qdCqsYrmLvC6w&s=10">
+<div class="card-content">
+<h3>Fresh Pastries</h3>
+<p>Soft, creamy and freshly baked every morning.</p>
+<span class="price">Rs. 120</span>
+</div>
+</div>
+
+<div class="card">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQZfO3b3MX3dyTPg-KU_BEpRdlgfrr7loiI80ajEL49w&s=10">
+<div class="card-content">
+<h3>Chocolate Cake</h3>
+<p>Rich chocolate layers with silky chocolate cream.</p>
+<span class="price">Rs. 650</span>
+</div>
+</div>
+
+<div class="card">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNvnropvw3NVJR7kjr2zFUgoR724-KxgYKAqTfFldg7ix8T5aH-kNq1jM&s=10">
+<div class="card-content">
+<h3>Strawberry Cake</h3>
+<p>Fresh strawberries with soft vanilla sponge.</p>
+<span class="price">Rs. 700</span>
+</div>
+</div>
+
+<div class="card">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUvMnqpp4kU57Gah94zNAjZAKvKDO6gKTDzTgISMZgbk8xC-KpryADmCi6&s=10">
+<div class="card-content">
+<h3>Butterscotch</h3>
+<p>Crunchy caramel pieces with creamy frosting.</p>
+<span class="price">Rs. 680</span>
+</div>
+</div>
+
+<div class="card">
+<img src="https://cdn.prod.website-files.com/614a379840dbad1848e598c2/6798fef884436af6dd8b300c_IMG_1610.jpg">
+<div class="card-content">
+<h3>Red Velvet</h3>
+<p>Velvety red sponge with smooth cream cheese frosting.</p>
+<span class="price">Rs. 750</span>
+</div>
+</div>
+
+<div class="card">
+<img src="https://thescranline.com/wp-content/uploads/2025/02/VANILLA-CAKE-25-WEB-03-768x1024.jpg">
+<div class="card-content">
+<h3>Vanilla Dream</h3>
+<p>Light vanilla sponge with delicate buttercream.</p>
+<span class="price">Rs. 550</span>
+</div>
+</div>
+
+<div class="card">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeuWfyCNZ9YqFFuDRYkj2m808z4NuU57JGKQTFaXcOVjIa9srVG95Pxtaf&s=10">
+<div class="card-content">
+<h3>Black Forest</h3>
+<p>Chocolate sponge, cherries and clouds of cream.</p>
+<span class="price">Rs. 720</span>
+</div>
+</div>
+
+<div class="card">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbixxvPUVuc90U0HRfBcL5L4l98OwADHFVtcpIbigTHA&s=10">
+<div class="card-content">
+<h3>Custom Cakes</h3>
+<p>Your idea, your design, your perfect celebration cake.</p>
+<span class="price">From Rs. 900</span>
+</div>
+</div>
+
+<div class="card">
+<img src="https://sallysbakingaddiction.com/wp-content/uploads/2013/05/classic-chocolate-chip-cookies.jpg">
+<div class="card-content">
+<h3>Fresh Cookies</h3>
+<p>Freshly baked batch of chocochip Cookies.</p>
+<span class="price">Rs. 100</span>
+</div>
+</div>
+
+<div class="card">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRipdV7hRiCnx_j0EkvlbNHa80uZER6c96J266dAVwXis6kKVncBUZJzo&s=10">
+<div class="card-content">
+<h3>Cupcakes</h3>
+<p>vanila sponge with delicious cream.</p>
+<span class="price">Rs. 120</span>
+</div>
+</div>
+
+<div class="card">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-0gTxIpqU62AVibFgTtyBBr9u9Psq6GiIgerAHEvVuA&s=10">
+<div class="card-content">
+<h3>Donuts</h3>
+<p>Freshly baked goodnes dipped in cream and topped with sprinkles.</p>
+<span class="price"> Rs. 100</span>
+</div>
+</div>
+
+<div class="card">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTREiW9MGqnLPQMyY_lHvSEXjAynZwXljud6I7RW5wZrw&s=10">
+<div class="card-content">
+<h3>Pie tarts</h3>
+<p>Delicious pie tarts of your taste.</p>
+<span class="price">Rs. 100</span>
+</div>
+</div>
+
+</div>
+</section>
+
+<section class="feature">
+<div class="feature-image">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYhtDOSuCO46RZ_U75Gj_6y6crTHH69awpPPkF4vhU3YOBhjRomzMuvMk&s=10">
+</div>
+<div class="feature-text">
+<h2>A Cake Made Just For You</h2>
+<p>Planning a birthday, celebration or special event? Tell us your idea and we will turn it into a beautiful custom cake made especially for your occasion.</p>
+<a href="order.html" class="button">Order Your Cake</a>
+</div>
+</section>
+
+<section class="custom" id="custom">
+<h2>Made For Your Moments</h2>
+<p>Choose your flavor, design and size. From elegant minimal cakes to dreamy celebration cakes, we create something that feels uniquely yours.</p>
+<a href="order.html" class="button">Create Your Cake</a>
+</section>
+
+<section class="offer">
+<h2>Seasonal Sweet Offer</h2>
+<p>Enjoy 20% off selected cakes and pastries this season.</p>
+<a href="#menu" class="button">View Offers</a>
+</section>
+
+<section class="gallery-section" id="gallery">
+<div class="gallery-title">
+<h2>From Our Bakery</h2>
+<p>A little glimpse of our sweet world</p>
+</div>
+<div class="gallery">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR58Lx-LYAyeVBQ0ubedlgU7PDJV-dybMFnEC4S31ucj8k8mDbdFORlny0&s=10)">
+<img src="https://media.istockphoto.com/id/916575452/photo/close-up-of-freshly-baked-cakes-and-cupcakes-in-a-row-at-food-market.jpg?s=612x612&w=0&k=20&c=fEKj_ld6Xm-udSjlg_qARg0nzlZ-ie-GhkFx5j9ss9k=">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTK54IDObksf-WDQcpFl32bDV8IueL_iGmwrN2PttoSnp4bhuz_0ZJC7vA&s=10">
+<img src="https://plus.unsplash.com/premium_photo-1665669263531-cdcbe18e7fe4?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D">
+<img src="https://media.istockphoto.com/id/2204354530/photo/pastry-chef-arranging-christmas-cookies-in-bakery-display-case.jpg?s=612x612&w=0&k=20&c=4sXBjcVISb4t4wh-BsdjqghSaqlPz6RQ_ypLMkdzJoE=">
+</div>
+</section>
+
+<section class="contact" id="contact">
+<h2>Visit Whimsybell Bakery</h2>
+<p>MG Road, Vijayawada</p>
+<p>+91 98765 43210</p>
+<p>Whimsybell@gmail.com</p>
+<p>Monday-Sunday | 9:00 AM-9:00 PM</p>
+</section>
+
+<footer>
+<p>Whimsybell  Bakery | Freshly baked, beautifully made</p>
+</footer>
+
+</body>
+</html>

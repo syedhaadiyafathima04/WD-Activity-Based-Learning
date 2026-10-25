@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unlockd</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "DM Sans", sans-serif;
+    background: #f5f8f8;
+    color: #183b3d;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+header {
+    padding: 22px 6%;
+    background: #f5f8f8;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #008080;
+}
+
+.logo span {
+    color: #ff6b6b;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+nav a {
+    font-size: 14px;
+    transition: .3s;
+}
+
+nav a:hover {
+    color: #008080;
+}
+
+nav a:last-child {
+    background: #008080;
+    color: #fff;
+    padding: 11px 20px;
+    border-radius: 25px;
+}
+
+nav a:last-child:hover {
+    background: #006d6d;
+    color: #fff;
+}
+
+.hero {
+    margin: 0 4%;
+    min-height: 600px;
+    border-radius: 28px;
+    background:
+        linear-gradient(rgba(12,48,50,.42), rgba(12,48,50,.55)),
+        url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=85");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    padding: 7%;
+}
+
+.hero-content {
+    max-width: 650px;
+    color: #fff;
+}
+
+.hero-content > p {
+    color: #ffb0b0;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 18px;
+}
+
+.hero h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(50px, 6vw, 75px);
+    line-height: 1.03;
+    margin-bottom: 22px;
+}
+
+.hero h1 span {
+    color: #8ee1df;
+    font-style: italic;
+}
+
+.hero-text {
+    max-width: 540px;
+    font-size: 17px;
+    line-height: 1.7;
+    color: #e5eeee;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.hero-button {
+    background: #ff6b6b;
+    color: #fff;
+    padding: 14px 23px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.hero-button.secondary {
+    background: #fff;
+    color: #008080;
+}
+
+.search-box {
+    width: 86%;
+    margin: -42px auto 75px;
+    background: #fff;
+    padding: 18px;
+    border-radius: 18px;
+    box-shadow: 0 12px 35px rgba(0,0,0,.1);
+    display: flex;
+    gap: 10px;
+    align-items: end;
+    position: relative;
+}
+
+.search-item {
+    flex: 1;
+    background: #edf3f5;
+    padding: 11px 14px;
+    border-radius: 10px;
+}
+
+.search-item label {
+    display: block;
+    font-size: 9px;
+    color: #748386;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.search-item select {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #183b3d;
+    font-family: inherit;
+    font-size: 13px;
+}
+
+.search-button {
+    background: #ff6b6b;
+    color: #fff;
+    border: none;
+    padding: 15px 27px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 700;
+}
+
+.search-button:hover {
+    background: #ed5959;
+}
+
+.section {
+    width: 86%;
+    margin: auto;
+    padding-bottom: 90px;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 35px;
+}
+
+.section-heading p {
+    color: #ff6b6b;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 9px;
+    font-weight: 700;
+}
+
+.section-heading h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 43px;
+    color: #183b3d;
+}
+
+.view-all {
+    color: #008080;
+    font-size: 13px;
+    font-weight: 700;
+    border-bottom: 2px solid #008080;
+    padding-bottom: 4px;
+}
+
+.property-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.property-card {
+    background: #fff;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid #e5edef;
+    transition: .3s;
+}
+
+.property-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px rgba(0,0,0,.1);
+}
+
+.property-image {
+    height: 245px;
+    position: relative;
+    overflow: hidden;
+}
+
+.property-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .5s;
+}
+
+.property-card:hover img {
+    transform: scale(1.05);
+}
+
+.tag {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: #fff;
+    color: #008080;
+    padding: 7px 11px;
+    border-radius: 20px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.heart {
+    position: absolute;
+    right: 14px;
+    top: 14px;
+    width: 36px;
+    height: 36px;
+    background: #fff;
+    color: #ff6b6b;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 18px;
+}
+
+.property-info {
+    padding: 21px;
+}
+
+.property-info h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 22px;
+    margin-bottom: 6px;
+}
+
+.location {
+    color: #7b898c;
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+.price {
+    color: #008080;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.features {
+    display: flex;
+    gap: 15px;
+    border-top: 1px solid #e7edef;
+    padding-top: 14px;
+    color: #68787b;
+    font-size: 11px;
+}
+
+.about {
+    background: #dcecef;
+    padding: 90px 7%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: center;
+}
+
+.about-image {
+    position: relative;
+}
+
+.about-image img {
+    width: 100%;
+    height: 470px;
+    object-fit: cover;
+    border-radius: 22px;
+}
+
+.about-badge {
+    position: absolute;
+    right: -25px;
+    bottom: 25px;
+    background: #ff6b6b;
+    color: #fff;
+    width: 105px;
+    height: 105px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.about-text > p:first-child {
+    color: #008080;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 10px;
+    font-weight: 700;
+    margin-bottom: 13px;
+}
+
+.about-text h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 48px;
+    line-height: 1.08;
+    margin-bottom: 22px;
+}
+
+.about-text h2 span {
+    color: #ff6b6b;
+    font-style: italic;
+}
+
+.about-text > p {
+    color: #607376;
+    line-height: 1.8;
+    font-size: 15px;
+    max-width: 500px;
+}
+
+.amenities {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 28px;
+}
+
+.amenity {
+    background: #fff;
+    border: 1px solid #d6e4e6;
+    padding: 15px;
+    border-radius: 10px;
+    color: #31575a;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.categories {
+    padding: 90px 7%;
+    background: #fff0ee;
+}
+
+.categories-heading {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.categories-heading p {
+    color: #008080;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 10px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.categories-heading h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 45px;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.category {
+    height: 220px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 17px;
+}
+
+.category img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .4s;
+}
+
+.category:hover img {
+    transform: scale(1.06);
+}
+
+.category-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(transparent 35%, rgba(0,0,0,.68));
+    display: flex;
+    align-items: end;
+    padding: 20px;
+    color: #fff;
+}
+
+.category-overlay h3 {
+    font-size: 18px;
+}
+
+.amenities-section {
+    background: #008080;
+    color: #fff;
+    padding: 90px 7%;
+}
+
+.amenities-heading {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.amenities-heading p {
+    color: #ffb0b0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 10px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.amenities-heading h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 46px;
+}
+
+.amenities-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+}
+
+.amenity-box {
+    background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.2);
+    padding: 25px 20px;
+    border-radius: 15px;
+    transition: .3s;
+}
+
+.amenity-box:hover {
+    background: #fff;
+    color: #008080;
+    transform: translateY(-4px);
+}
+
+.amenity-box span {
+    color: #ffb0b0;
+    font-size: 10px;
+}
+
+.amenity-box h3 {
+    font-size: 17px;
+    margin: 22px 0 7px;
+}
+
+.amenity-box p {
+    font-size: 11px;
+    line-height: 1.6;
+    opacity: .8;
+}
+
+.comparison {
+    background: #dcecef;
+    padding: 90px 7%;
+}
+
+.comparison-heading {
+    text-align: center;
+    margin-bottom: 38px;
+}
+
+.comparison-heading p {
+    color: #ff6b6b;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 10px;
+    font-weight: 700;
+    margin-bottom: 9px;
+}
+
+.comparison-heading h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 45px;
+    color: #183b3d;
+}
+
+.table-wrapper {
+    background: #fff;
+    border-radius: 17px;
+    overflow-x: auto;
+    box-shadow: 0 10px 25px rgba(0,0,0,.06);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 750px;
+}
+
+th {
+    background: #183b3d;
+    color: #fff;
+    padding: 18px;
+    text-align: left;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+td {
+    padding: 18px;
+    border-bottom: 1px solid #e6edef;
+    color: #657578;
+    font-size: 12px;
+}
+
+td:first-child {
+    color: #183b3d;
+    font-weight: 700;
+}
+
+tr:hover td {
+    background: #f4f8f9;
+}
+
+.cta {
+    background: #fff0ee;
+    padding: 95px 7%;
+    text-align: center;
+}
+
+.cta p:first-child {
+    color: #008080;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 10px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.cta h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 55px;
+    line-height: 1;
+}
+
+.cta h2 span {
+    color: #ff6b6b;
+    font-style: italic;
+}
+
+.cta > p {
+    color: #687b7e;
+    max-width: 500px;
+    margin: 20px auto 28px;
+    line-height: 1.7;
+}
+
+.cta-button {
+    display: inline-block;
+    background: #008080;
+    color: #fff;
+    padding: 14px 24px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+footer {
+    background: #183b3d;
+    color: #fff;
+    padding: 55px 7% 25px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 45px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255,255,255,.15);
+}
+
+.footer-logo {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+.footer-logo span {
+    color: #ff6b6b;
+}
+
+.footer-brand p {
+    color: #aebfc0;
+    max-width: 280px;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+footer h4 {
+    color: #ff9696;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 17px;
+}
+
+footer li {
+    list-style: none;
+    color: #aebfc0;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.footer-bottom {
+    padding-top: 22px;
+    display: flex;
+    justify-content: space-between;
+    color: #789092;
+    font-size: 10px;
+}
+
+@media (max-width: 900px) {
+    nav {
+        display: none;
+    }
+
+    .property-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .about {
+        grid-template-columns: 1fr;
+    }
+
+    .search-box {
+        flex-wrap: wrap;
+    }
+
+    .search-item {
+        min-width: 45%;
+    }
+
+    .category-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .amenities-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero {
+        margin: 0 2%;
+        padding: 40px 25px;
+    }
+
+    .hero h1 {
+        font-size: 45px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .search-box {
+        width: 90%;
+    }
+
+    .search-item {
+        min-width: 100%;
+    }
+
+    .property-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .amenities-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .amenities {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">UNLOCKD<span>.</span></div>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#properties">Properties</a>
+        <a href="#about">About</a>
+        <a href="#explore">Explore</a>
+        <a href="#compare">Compare</a>
+    </nav>
+</header>
+
+<section class="hero" id="home">
+    <div class="hero-content">
+        <p>Find a place to belong</p>
+        <h1>Beautiful spaces.<br><span>Better living.</span></h1>
+        <div class="hero-text">
+            Discover thoughtfully selected homes, apartments, villas and rental properties in some of the most desirable locations.
+        </div>
+        <div class="hero-buttons">
+            <a href="#properties" class="hero-button">Explore properties</a>
+            <a href="#compare" class="hero-button secondary">Compare homes</a>
+        </div>
+    </div>
+</section>
+
+<div class="search-box">
+    <div class="search-item">
+        <label>Location</label>
+        <select>
+            <option>All Locations</option>
+            <option>Hyderabad</option>
+            <option>Vijayawada</option>
+            <option>Bangalore</option>
+            <option>Mumbai</option>
+        </select>
+    </div>
+
+    <div class="search-item">
+        <label>Property Type</label>
+        <select>
+            <option>All Types</option>
+            <option>House</option>
+            <option>Apartment</option>
+            <option>Villa</option>
+            <option>Studio</option>
+        </select>
+    </div>
+
+    <div class="search-item">
+        <label>Budget</label>
+        <select>
+            <option>Any Price</option>
+            <option>Under Rs 50 Lakh</option>
+            <option>₹50 Lakh-Rs 1 Crore</option>
+            <option>₹1 Crore-Rs 2 Crore</option>
+            <option>Above Rs 2 Crore</option>
+        </select>
+    </div>
+
+    <button class="search-button">Search</button>
+</div>
+
+<section class="section" id="properties">
+    <div class="section-heading">
+        <div>
+            <p>Our collection</p>
+            <h2>Featured Properties</h2>
+        </div>
+        <a href="#" class="view-all">View all</a>
+    </div>
+
+    <div class="property-grid">
+
+        <div class="property-card">
+            <div class="property-image">
+                <img src="Modern Vedant Apartment Complex.png">
+                <span class="tag">FOR SALE</span>
+            </div>
+            <div class="property-info">
+                <h3> Oorjita Vedant</h3>
+                <div class="location">Manchirevula, Narsingi, Hyderabad</div>
+                <div class="price">Rs 7,499 / SFT</div>
+                <div class="features">
+                    <span> 500 Units</span>
+                    <span>4 Towers</span>
+                    <span> 2 BHK: 1251 – 1308 SFT<br>
+                          3 BHK: 1431 – 2388 SFT</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="property-card">
+            <div class="property-image">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNemCnfbP2gbRxx9Qin5OCOHFnV1vEwJTWt2uVCs872w&s=10">
+                <span class="tag">FOR RENT</span>
+            </div>
+            <div class="property-info">
+                <h3>Elegant City Apartment</h3>
+                <div class="location">Madhapur, Hyderabad</div>
+                <div class="price">Rs 48,000 / Month</div>
+                <div class="features">
+                    <span>3 Beds</span>
+                    <span>2 Baths</span>
+                    <span>1,750 sq.ft</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="property-card">
+            <div class="property-image">
+                <img src="Golden-Hour Luxury Residential Towers.png">
+                <span class="tag">FOR SALE</span>
+            </div>
+            <div class="property-info">
+                <h3> Vajra West City</h3>
+                <div class="location">Osman Nagar, Tellapur West Hyderabad</div>
+                <div class="price">Rs 2.40 Crore</div>
+                <div class="features">
+                    <span>1420–4400SFT</span><br>
+                    <span>39 Floors Luxury Towers</span><br>
+                    <span> 1420–4400SFT</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="property-card">
+            <div class="property-image">
+                <img src="Modern Honeycomb Apartment Facade.png">
+                <span class="tag">FOR SALE</span>
+            </div>
+            <div class="property-info">
+                <h3>Dominon </h3>
+                <div class="location">Bandlaguda, jagir/Kismatpur , Hyderabad</div>
+                <div class="price">Rs 68 Lakhs</div>
+                <div class="features">
+                    <span>E-1267SFT W-1336SFT</span>
+                    <span>10 units</span>
+                    <span>2BHK</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="property-card">
+            <div class="property-image">
+                <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=85">
+                <span class="tag">FOR RENT</span>
+            </div>
+            <div class="property-info">
+                <h3>Luxury Sky Apartment</h3>
+                <div class="location">Financial District, Hyderabad</div>
+                <div class="price">Rs 65,000 / Month</div>
+                <div class="features">
+                    <span>3 Beds</span>
+                    <span>3 Baths</span>
+                    <span>2,100 sq.ft</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="property-card">
+            <div class="property-image">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVPXGFN-KooUBmi-ID9usxqTHUNhuyXV-d_CDcDmS8iA&s=10">
+                <span class="tag">FOR SALE</span>
+            </div>
+            <div class="property-info">
+                <h3>Srinidhis prakruthi- Open plot</h3>
+                <div class="location">Gollanapalli, Near West Bypass</div>
+                <div class="price">West-Rs.13.90lakhs<br> East-Rs.14.50lakhs-</div>
+                <div class="features">
+                    <span>150 Sqyrds</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="about" id="about">
+    <div class="about-image">
+        <img src="https://media.istockphoto.com/id/950336722/photo/cityscape-in-an-indian-city-with-concrete-buildings-and-skyscrap.jpg?s=612x612&w=0&k=20&c=qZFkvOGeg_fJUUzCYsncFdIVfNIMYiw16KbzID-pWuI=">
+        <div class="about-badge">FIND YOUR<br>PLACE</div>
+    </div>
+
+    <div class="about-text">
+        <p>Why UNLOCKD</p>
+        <h2>A home should feel like <span>your own world.</span></h2>
+        <p>
+            We bring together beautiful properties and meaningful locations to make finding your next home simple, comfortable and inspiring.
+        </p>
+
+        <div class="amenities">
+            <div class="amenity">Private Parking</div>
+            <div class="amenity">Swimming Pool</div>
+            <div class="amenity">24/7 Security</div>
+            <div class="amenity">Modern Kitchen</div>
+            <div class="amenity">Garden Space</div>
+            <div class="amenity">Fitness Centre</div>
+        </div>
+    </div>
+</section>
+
+<section class="categories" id="explore">
+    <div class="categories-heading">
+        <p>Explore by property type</p>
+        <h2>Find your kind of place.</h2>
+    </div>
+
+    <div class="category-grid">
+        <div class="category">
+            <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=85">
+            <div class="category-overlay">
+               <h3>Modern Houses</h3>
+            </div>
+        </div>
+
+        <div class="category">
+            <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=85">
+            <div class="category-overlay">
+                <h3>Apartments</h3>
+            </div>
+        </div>
+
+        <div class="category">
+            <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=800&q=85">
+            <div class="category-overlay">
+                <h3>Luxury Villas</h3>
+            </div>
+        </div>
+
+        <div class="category">
+            <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=800&q=85">
+            <div class="category-overlay">
+                <h3>Rental Homes</h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="amenities-section">
+    <div class="amenities-heading">
+        <p>Property features</p>
+        <h2>What comes with your home.</h2>
+    </div>
+
+    <div class="amenities-grid">
+        <div class="amenity-box">
+            <span>01</span>
+            <h3>Parking</h3>
+            <p>Dedicated parking spaces for convenient everyday living.</p>
+        </div>
+
+        <div class="amenity-box">
+            <span>02</span>
+            <h3>Swimming Pool</h3>
+            <p>Private or shared pools available in selected properties.</p>
+        </div>
+
+        <div class="amenity-box">
+            <span>03</span>
+            <h3>Security</h3>
+            <p>Secure entrances and modern safety features.</p>
+        </div>
+
+        <div class="amenity-box">
+            <span>04</span>
+            <h3>Garden</h3>
+            <p>Outdoor green spaces for relaxing and entertaining.</p>
+        </div>
+
+        <div class="amenity-box">
+            <span>05</span>
+            <h3>Gym</h3>
+            <p>Fitness facilities available in selected communities.</p>
+        </div>
+
+        <div class="amenity-box">
+            <span>06</span>
+            <h3>Balcony</h3>
+            <p>Extra outdoor space with views of the surrounding area.</p>
+        </div>
+
+        <div class="amenity-box">
+            <span>07</span>
+            <h3>Power Backup</h3>
+            <p>Backup systems for uninterrupted everyday comfort.</p>
+        </div>
+
+        <div class="amenity-box">
+            <span>08</span>
+            <h3>Smart Home</h3>
+            <p>Modern technology and connected home features.</p>
+        </div>
+    </div>
+</section>
+
+<section class="comparison" id="compare">
+    <div class="comparison-heading">
+        <p>Side by side</p>
+        <h2>Compare Properties</h2>
+    </div>
+
+    <div class="table-wrapper">
+        <table>
+            <tr>
+                <th>Property</th>
+                <th>Type</th>
+                <th>Location</th>
+                <th>Price</th>
+                <th>Area</th>
+            </tr>
+
+            <tr>
+                <td>Modern Garden Villa</td>
+                <td>Villa</td>
+                <td>Banjara Hills</td>
+                <td>Rs 1.85 Cr</td>
+                <td>2,850 sq.ft</td>
+            </tr>
+
+            <tr>
+                <td>Elegant City Apartment</td>
+                <td>Apartment</td>
+                <td>Madhapur</td>
+                <td>Rs 48,000/mo</td>
+                <td>1,750 sq.ft</td>
+            </tr>
+
+            <tr>
+                <td>Contemporary Residence</td>
+                <td>House</td>
+                <td>Jubilee Hills</td>
+                <td>Rs 2.40 Cr</td>
+                <td>3,400 sq.ft</td>
+            </tr>
+
+            <tr>
+                <td>Minimalist Dream Home</td>
+                <td>House</td>
+                <td>Gachibowli</td>
+                <td>Rs 1.25 Cr</td>
+                <td>2,200 sq.ft</td>
+            </tr>
+
+            <tr>
+                <td>Private Pool Villa</td>
+                <td>Villa</td>
+                <td>Kondapur</td>
+                <td>Rs 2.10 Cr</td>
+                <td>3,100 sq.ft</td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+<section class="cta">
+    <p>Start your search</p>
+    <h2>Find your <span>place.</span></h2>
+    <p>Explore properties, compare your options and discover somewhere that feels right.</p>
+    <a href="#properties" class="cta-button">Browse properties</a>
+</section>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-brand">
+            <div class="footer-logo">UNLOCKD<span>.</span></div>
+            <p>Beautiful spaces, useful details and better ways to find your next home.</p>
+        </div>
+
+        <div>
+            <h4>Explore</h4>
+            <ul>
+                <li>Properties</li>
+                <li>Apartments</li>
+                <li>Villas</li>
+                <li>Rental homes</li>
+            </ul>
+        </div>
+
+        <div>
+            <h4>Company</h4>
+            <ul>
+                <li>About us</li>
+                <li>Our story</li>
+                <li>Agents</li>
+                <li>Contact</li>
+            </ul>
+        </div>
+
+        <div>
+            <h4>Contact</h4>
+            <ul>
+                <li>Unlockd@gmail.com</li>
+                <li>+91 98765 43210</li>
+                <li>Vijayawada, India</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <span>@2026 UNLOCKD REAL ESTATE</span>
+        <span>Find your space. Find your place.</span>
+    </div>
+</footer>
+
+</body>
+</html>
